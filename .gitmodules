@@ -1,0 +1,6 @@
+[submodule "deps/jquery.dform"]
+	path = deps/jquery.dform
+	url = https://github.com/daffl/jquery.dform.git
+[submodule "deps/Magnific-Popup"]
+	path = deps/Magnific-Popup
+	url = https://github.com/dimsemenov/Magnific-Popup.git
