@@ -4,12 +4,41 @@
   <meta charset="utf-8">
   <title>magnific_dform</title>
   <script src="../libs/Magnific-Popup/libs/jquery/jquery.js" type="text/javascript" charset="utf-8"></script>
-  <script src="../libs/Magnific-Popup/dist/jquery.magnific-popup.js" type="text/javascript" charset="utf-8"></script>
-  <script src="../libs/jquery.dform/dist/jquery.dform-1.1.0.js" type="text/javascript" charset="utf-8"></script>
-  <script src="../src/mfp_dform.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../src/magnific_dform.js" type="text/javascript" charset="utf-8"></script>
   <link rel="stylesheet" href="../libs/Magnific-Popup/dist/magnific-popup.css" type="text/css" media="screen" title="no title" charset="utf-8">
 </head>
 <body id="body" onload="">
-  test
+  <a href="#form" class="mfp-dform">open form</a>
+  <script type="text/javascript">
+  $('.mfp-dform').magnificPopup({
+    type: 'dform',
+    ajax: {
+      success: function(data) {
+        alert(data);
+        $.magnificPopup.close();
+      }
+    },
+    form: {
+      "action" : "result.php",
+      "method" : "get",
+      "html" :
+      [
+        {
+          "type": "p",
+          "html": "enter URL"
+        },
+        {
+          "name": "url",
+          "type" : "text",
+          "placeholder": "url",
+        },
+        {
+          "type" : "submit",
+          "value" : "Parse CSV"
+        }
+      ]
+    }
+  });
+  </script>
 </body>
 </html>
