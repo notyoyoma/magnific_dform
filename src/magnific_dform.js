@@ -2956,6 +2956,11 @@ $.magnificPopup.registerModule(JSFORM_NS, {
             data: $(this).serializeObject(),
             error: function(req, stat, err) { alert(err); }
           };
+          // allow override from MFP trigger script
+          $.extend(opts, options.ajax);
+          // do not allow the mfp to override the success function
+          // because the success function needs access to the
+          // mfp objects
           if (options.ajax.success) {
             opts.success = function(data) {
               var result = options.ajax.success(data);
@@ -2967,8 +2972,6 @@ $.magnificPopup.registerModule(JSFORM_NS, {
             // devault success assumes the target returns HTML or simple text
             opts.success = function(data) { form.addClass('success').html(data); };
           }
-          // allow override from MFP trigger script
-          $.extend(opts, options.ajax);
           $.ajax(opts);
           return false;
         });
