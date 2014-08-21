@@ -2957,7 +2957,12 @@ $.magnificPopup.registerModule(JSFORM_NS, {
             error: function(req, stat, err) { alert(err); }
           };
           if (options.ajax.success) {
-            opts.success = function(data) { form.addClass('success').html(options.ajax.success(data)); };
+            opts.success = function(data) {
+              var result = options.ajax.success(data);
+              if (result.typeof == 'object') form.empty().append(result);
+              else form.html(result);
+              form.addClass('success');
+            };
           } else {
             // devault success assumes the target returns HTML or simple text
             opts.success = function(data) { form.addClass('success').html(data); };
