@@ -2951,7 +2951,7 @@ $.magnificPopup.registerModule(JSFORM_NS, {
       if (options.ajax){
         form.find('form').submit(function(e) {
           var opts = {
-            type: "POST",
+            type: options.form.method,
             url: options.form.action, 
             data: $(this).serializeObject(),
             error: function(req, stat, err) { alert(err); }
